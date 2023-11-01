@@ -17,13 +17,17 @@ answer the 5 mandatory questions,
 check what kind of info(table, colume) is need,and clean the data that required by sepcific quesions before answer those Qs
 step 4
 come up with additional 3 questions
-step 5
+step 5 
+develop and execute a QA
+step 6
+generate an ERD
 
 ## Results
-(fill in what you discovered this data could tell you and how you used the data to answer those questions)
+the USA has a highest revenue and the city has highest revenue is Chicago/Sanfracisco
+people ordered  
 
 ## Challenges 
-(discuss challenges you faced in the project)
+by understanding the data and cleaning and normalize
 
 ## Future Goals
-(what would you do if you had more time?)
+focus more on cleaning and normalize
