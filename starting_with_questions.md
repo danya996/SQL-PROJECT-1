@@ -5,10 +5,19 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 
 SQL Queries:
+create view transaction_revenue as
+select cast(als.productprice/10000 as int) as productprice, sr.total_ordered, 
+cast (productprice/10000 *total_ordered as int) as transaction_revenue, als.productsku
+from all_sessions als
+join sales_report sr using (productsku)
+
+select country, city, transaction_revenue
+from all_sessions als
+join transaction_revenue using (productsku)
+order by transaction_revenue desc
 
 
-
-Answer:
+Answer: USA Chicago
 
 
 
@@ -16,11 +25,23 @@ Answer:
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
 
-SQL Queries:
+SQL Queries: 
+select  als.city,cast (avg(sr.total_ordered) as float)
+from all_sessions als
+join sales_report as sr using(productsku)
+where city is not null and city !='(not set)' and city !='not available in demo dataset'
+group by city
+order by avg(sr.total_ordered) desc
+
+select  als.country,cast (avg(sr.total_ordered) as float)
+from all_sessions als
+join sales_report as sr using(productsku)
+where country is not null 
+group by country
+order by avg(sr.total_ordered) desc
 
 
-
-Answer:
+Answer: 
 
 
 
@@ -77,11 +98,21 @@ Answer: the top selling products are mostly drinkwares, office, appreal, ect...
 
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
 
-SQL Queries:
+SQL Queries: 
+create view transaction_revenue as
+select cast(als.productprice/10000 as int) as productprice, sr.total_ordered, 
+cast (productprice/10000 *total_ordered as int) as transaction_revenue, als.productsku
+from all_sessions als
+join sales_report sr using (productsku)
+
+select country, city, transaction_revenue
+from all_sessions als
+join transaction_revenue using (productsku)
+order by transaction_revenue desc
 
 
+Answer: developed countries has higher revenue
 
-Answer:
 
 
 
