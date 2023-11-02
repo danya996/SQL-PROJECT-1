@@ -42,31 +42,50 @@ Answer:  Spain has the highest average, followed by USA
 
 
 SQL Queries:
-SELECT COUNT(*), ALS.COUNTRY, ALS.CITY, ALS.v2ProductCategory
+SELECT SUM(ALS.productQuantity) AS CNT, ALS.COUNTRY, ALS.CITY, ALS.v2ProductCategory
 FROM ALL_SESSIONS ALS
-WHERE ALS.COUNTRY != '(not set)' AND ALS.CITY != '(not set)' AND ALS.CITY != 'not available in demo dataset' AND ALS.v2ProductCategory != '(not set)'
+WHERE ALS.COUNTRY != '(not set)' 
+  AND ALS.CITY != '(not set)' 
+  AND ALS.CITY != 'not available in demo dataset' 
+  AND ALS.productQuantity IS NOT NULL 
 GROUP BY ALS.COUNTRY, ALS.CITY, ALS.v2ProductCategory
-ORDER BY COUNT(*) DESC
+ORDER BY SUM(ALS.productQuantity) DESC
 
 
-Answer: Mountain View has the highest order amount, the top categories of prodcuts are Men's T-Shirts, Nest-USA, and Electronics
+Answer: the top categories of prodcuts are bags, Nest-USA, Drinkware
 
 **Question 4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?**
 
 
 SQL Queries:
+SELECT SBQ.COUNTRY, SBQ.CITY, SBQ.v2ProductName, MAX(CNT_SOLD)
+FROM (
+  SELECT SUM(ALS.productQuantity) AS CNT_SOLD, ALS.COUNTRY, ALS.CITY, ALS.v2ProductName 
+  FROM ALL_SESSIONS ALS
+  WHERE ALS.COUNTRY != '(not set)' 
+  AND ALS.CITY != '(not set)' 
+  AND ALS.CITY != 'not available in demo dataset' 
+  AND ALS.v2ProductName != '(not set)'
+  AND ALS.productQuantity IS NOT NULL 
+  GROUP BY ALS.COUNTRY, ALS.CITY, ALS.v2ProductName
+) SBQ
+GROUP BY SBQ.COUNTRY, SBQ.CITY, SBQ.v2ProductName
 
-Answer: 
+Answer:  the top three are wazed dress socks, google note book reused shopping bags.
 
 
 
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
 
 SQL Queries: 
+SELECT SUM(Als.totalTransactionRevenue / 1000000) AS SUM_TOTAL, Als.COUNTRY, Als.CITY
+FROM ALL_SESSIONS als
+WHERE Als.COUNTRY != '(not set)' AND Als.CITY != '(not set)' AND Als.CITY != 'not available in demo dataset'
+GROUP BY Als.COUNTRY, Als.CITY
+ORDER BY SUM(Als.totalTransactionRevenue / 1000000) DESC
 
 
-
-Answer: 
+Answer:  The country has highest revenue is USA and the top three cities are all from USA, San Fransico, Sunnyvale, Atlanta. There are all from developed cities and country.
 
 
 
