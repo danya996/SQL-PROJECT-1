@@ -23,11 +23,12 @@ step 6
 generate an ERD
 
 ## Results
-The USA has 
- 
+The USA, and cities: San Fransico, Sunnyvale, Atlanta, are having the highest transaction revenue and revenue.
+the top categories of prodcuts ordered are bags, Nest-USA, Drinkware
+the top selling products are wazed dress socks, google note book reused shopping bags.
 
 ## Challenges 
 Cleaning data is most challenges part
 
 ## Future Goals
-focus more on cleaning and normalize
+focus more on cleaning data
