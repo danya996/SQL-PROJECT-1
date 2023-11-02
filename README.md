@@ -32,3 +32,6 @@ Cleaning data is most challenges part
 
 ## Future Goals
 focus more on cleaning data
+
+![ERD](https://github.com/danya996/SQL-PROJECT-1/assets/139313421/0af9579d-1ee6-4d0f-80c6-2c2c9ad06513)
+
