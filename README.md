@@ -1,8 +1,8 @@
 # Final-Project-Transforming-and-Analyzing-Data-with-SQL
 
 ## Project/Goals
-project: import raw database into pgAdmin and analyze data to answer questions 
-Goals: undertanding the database, clean data, use integrit data to answer questions
+project: import raw database into pgAdmin and use SQL knowledge to analyze data 
+Goals: The goal is to clean data, use integrit data for analysis, and execute a QA
 
 ## Process
 step 1
@@ -11,10 +11,10 @@ insert tables to the database,
 create a back up database
 step 2
 went throught all the data, 
-found data need to be cleaned, like null values, redundant columns, the formats for time and date are wrong
+found data need to be cleaned, like duplicated record,
+abnormal data from city and country column in all_sessions table, redundant rows like sku in products table
 step 3
-answer the 5 mandatory questions, 
-check what kind of info(table, colume) is need,and clean the data that required by sepcific quesions before answer those Qs
+answer the 5 mandatory questions
 step 4
 come up with additional 3 questions
 step 5 
@@ -23,11 +23,11 @@ step 6
 generate an ERD
 
 ## Results
-the USA has a highest revenue and the city has highest revenue is Chicago/Sanfracisco
-people ordered  
+The USA has 
+ 
 
 ## Challenges 
-by understanding the data and cleaning and normalize
+Cleaning data is most challenges part
 
 ## Future Goals
 focus more on cleaning and normalize
